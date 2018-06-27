@@ -1,4 +1,4 @@
-" Please note: Vundle needs to be separately installed first.
+" PLEASE NOTE: Vundle needs to be separately installed first.
 " See: http://github.com/VundleVim/Vundle.Vim
 
 " definitions required by Vundle start here
@@ -58,7 +58,7 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 " Airline settings
-" Please note: Airline requires Powerline fonts to show correctly.
+" PLEASE NOTE: Airline requires Powerline fonts to show correctly.
 " See: https://github.com/powerline/fonts
 " If undesired, please use Lighline instead (see alternative plugins above
 " and deprecated settings at the bottom)
@@ -70,7 +70,7 @@ let g:airline#extensions#tabline#formatter = 'unique_tail_improved' " format fil
 " NERDTree settings and mappings
 let NERDTreeQuitOnOpen = 1 " close NERDTree when opening a file
 let NERDTreeAutoDeleteBuffer = 1 " delete also the buffer when deleting a file
-nnoremap <leader>f :NERDTreeToggle<Enter>
+nnoremap <leader>f :NERDTreeToggle<CR>
 nnoremap <silent> <leader>v :NERDTreeFind<CR>
 
 " make NERDCommenter add a space after comment sign
@@ -89,6 +89,23 @@ nnoremap <leader><space> :noh<CR>
 nnoremap <leader>p :bp<CR>
 nnoremap <leader>n :bn<CR>
 nnoremap <leader>d :bd<CR>
+
+" PLEASE NOTE: the following is for Nordic keyboard layouts.
+" map search forward and backward similarly as in US/UK keyboards
+nnoremap - /
+nnoremap _ ?
+
+" PLEASE NOTE: the following is for Nordic keyboard layouts.
+" map colon similarly (or better) as in US/UK keyboards
+nnoremap ö :
+
+" PLEASE NOTE: the following is for Nordic keyboard layouts.
+" make switching case easier
+nnoremap ä ~
+
+" PLEASE NOTE: the following is for Nordic keyboard layouts.
+" map euro sign to dollar sign for easier moving to the EOL
+nnoremap € $
 
 " map <ESC> to jk
 inoremap jk <ESC>
@@ -124,13 +141,10 @@ set tabstop=2 " show tab as X spaces
 set shiftwidth=2 " number of spaces for autoindent
 set shiftround " use shiftwidth when indenting with < and >
 set expandtab " make tab insert spaces instead of tab characters
-set showmatch " show matching parentheses
-" set textwidth=79 " set text width (duh!)
 set encoding=utf-8 " set proper text encoding
 set cursorline " highlight active line
 set scrolloff=7 " keep cursor nearer to the middle of the screen
 set colorcolumn=85 " show highlighted column @ 85 width
-" set cuc cul" " highlight active column
 
 " *****************************************************************
 " Here be deprecated settings saved for just-in-case:
