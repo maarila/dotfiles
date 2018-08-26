@@ -1,10 +1,13 @@
 # Create a two-line prompt
 export PS1="\[\033[32m\]\u\[\033[32m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\n\[\033[m\]\$ "
 
+# add directories for cd command to find
+export CDPATH=.:$HOME:/usr/local/share:$HOME/code
+
 # Set aliases
 # Please note: 'gls' command requires coreutils to be installed on OS X.
 # Run: brew install coreutils
-alias ll='gls -Fh -la --color --group-directories-first'
+alias l='gls -Fh -la --color --group-directories-first'
 alias o='gls -latr --color --group-directories-first'
 alias cd..='cd ..'
 alias ..='cd ..'
