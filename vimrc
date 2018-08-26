@@ -13,7 +13,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'morhetz/gruvbox' " gruvbox theme
 Plugin 'scrooloose/nerdtree' " fancy tree file system explorer
-Plugin 'vim-airline/vim-airline' " fancy status line at the bottom
+Plugin 'itchyny/lightline.vim' " show status line at the bottom
 Plugin 'Yggdroot/indentLine' " show vertical indentation lines
 Plugin 'tpope/vim-surround' " add, change, delete surroundings, cs'<q> -> ' to q
 Plugin 'justinmk/vim-sneak' " search with s{char}{char}
@@ -22,20 +22,19 @@ Plugin 'tpope/vim-fugitive' " Git wrapper
 Plugin 'pangloss/vim-javascript' " Javascript syntax package
 Plugin 'mxw/vim-jsx' " React syntax highlighting
 Plugin 'othree/html5.vim' " html5 syntax and indent
-Plugin 'mattn/emmet-vim' " expand html and css
+Plugin 'mattn/emmet-vim' " expand html and css with <C-y>,
+Plugin 'jiangmiao/auto-pairs' " insert parenthesis in pairs
 Plugin 'scrooloose/syntastic' " TO BE REPLACED BY ALE
 
 " potential plugins
 " Plugin 'airblade/vim-gitgutter' " show git diff in the gutter
 " Plugin 'HerringtonDarkholme/yats.vim' " Typescript syntax
-" Plugin 'Raimondi/delimitMate' " automatic parentheses
 " Plugin 'sheerun/vim-polyglot' " works automatically
-" Plugin 'ntpeters/vim-better-whitespace " improved whitespace detection
 
 " alternative plugins
 " Plugin 'othree/yajs.vim' " Javascript syntax file
 " Plugin 'ryanoasis/vim-devicons' " requires nerdtree
-" Plugin 'itchyny/lightline.vim' " alternative to airline
+" Plugin 'vim-airline/vim-airline' " alternative to lightline
 " Plugin 'nathanaelkane/vim-indent-guides' " activate with <leader>ig
 
 call vundle#end()            " required
@@ -57,16 +56,6 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-" Airline settings
-" PLEASE NOTE: Airline requires Powerline fonts to show correctly.
-" See: https://github.com/powerline/fonts
-" If undesired, please use Lighline instead (see alternative plugins above
-" and deprecated settings at the bottom)
-let g:airline_powerline_fonts = 1 " enable Powerline fonts
-let g:airline#extensions#tabline#enabled = 1 " display all buffers
-let g:airline#extensions#tabline#buffer_nr_show = 1 " display buffer number
-let g:airline#extensions#tabline#formatter = 'unique_tail_improved' " format filepath
-
 " NERDTree settings and mappings
 let NERDTreeQuitOnOpen = 1 " close NERDTree when opening a file
 let NERDTreeAutoDeleteBuffer = 1 " delete also the buffer when deleting a file
@@ -75,6 +64,12 @@ nnoremap <silent> <leader>v :NERDTreeFind<CR>
 
 " make NERDCommenter add a space after comment sign
 let g:NERDSpaceDelims = 1
+
+" show Lightline at startup
+set laststatus=2
+
+" Sneak setting: enable clever sneak i.e. repeat sneak with s or S
+let g:sneak#s_next = 1
 
 " map ctrl+j/k/l/h to move around windows
 nnoremap <C-J> <C-W><C-J>
@@ -90,22 +85,30 @@ nnoremap <leader>p :bp<CR>
 nnoremap <leader>n :bn<CR>
 nnoremap <leader>d :bd<CR>
 
-" PLEASE NOTE: the following is for Nordic keyboard layouts.
-" map search forward and backward similarly as in US/UK keyboards
+" PLEASE NOTE: the following are for Nordic keyboard layouts.
+" map search forward and backward similarly as in US/UK keyboards, then switch
+" original functionality to the replacements
 nnoremap - /
 nnoremap _ ?
 
-" PLEASE NOTE: the following is for Nordic keyboard layouts.
+nnoremap / -
+nnoremap ? _
+
 " map colon similarly (or better) as in US/UK keyboards
 nnoremap ö :
 
-" PLEASE NOTE: the following is for Nordic keyboard layouts.
 " make switching case easier
 nnoremap ä ~
 
-" PLEASE NOTE: the following is for Nordic keyboard layouts.
 " map euro sign to dollar sign for easier moving to the EOL
 nnoremap € $
+
+" map c€ to c$
+nnoremap c€ c$
+
+" command mode: map backslash as in US/UK keyboards to make substituting faster
+cnoremap - /
+cnoremap / -
 
 " map <ESC> to jk
 inoremap jk <ESC>
@@ -125,7 +128,7 @@ colorscheme gruvbox
 
 " show trailing whitespace in red
 highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
+match ExtraWhitespace /\s\+\%#\@<!$/
 
 set hidden " hide buffers instead of closing them
 set noshowmode " hide -- INSERT -- from below Airline
@@ -149,8 +152,15 @@ set colorcolumn=85 " show highlighted column @ 85 width
 " *****************************************************************
 " Here be deprecated settings saved for just-in-case:
 
-" show Lightline at startup
-" set laststatus=2
+" Airline settings
+" PLEASE NOTE: Airline requires Powerline fonts to show correctly.
+" See: https://github.com/powerline/fonts
+" If undesired, please use Lighline instead (see alternative plugins above
+" and deprecated settings at the bottom)
+" let g:airline_powerline_fonts = 1 " enable Powerline fonts
+" let g:airline#extensions#tabline#enabled = 1 " display all buffers
+" let g:airline#extensions#tabline#buffer_nr_show = 1 " display buffer number
+" let g:airline#extensions#tabline#formatter = 'unique_tail_improved' " format filepath
 
 " set thin indent guides for vim-indent-guides
 " let g:indent_guides_guide_size = 1
