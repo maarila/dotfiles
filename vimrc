@@ -65,6 +65,10 @@ nnoremap <silent> <leader>v :NERDTreeFind<CR>
 " make NERDCommenter add a space after comment sign
 let g:NERDSpaceDelims = 1
 
+" disable indentLine for markdown in order to set conceal level to 0 in md files
+" i.e. show markdown formatting within a markdown file
+let g:indentLine_fileTypeExclude = ['markdown']
+
 " show Lightline at startup
 set laststatus=2
 
@@ -84,6 +88,11 @@ nnoremap <leader><space> :noh<CR>
 nnoremap <leader>p :bp<CR>
 nnoremap <leader>n :bn<CR>
 nnoremap <leader>d :bd<CR>
+
+" map up and down keys to move cursor one line at a time even when a single
+" line extends to multiple lines
+nmap j gj
+nmap k gk
 
 " PLEASE NOTE: the following are for Nordic keyboard layouts.
 " map search forward and backward similarly as in US/UK keyboards, then switch
