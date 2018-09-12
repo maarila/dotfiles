@@ -1,0 +1,14 @@
+[color]
+    ui = auto
+[user]
+	email = email@address.here
+	name = Firstname Lastname
+[credential]
+    helper = osxkeychain
+[core]
+	editor = /usr/local/bin/vim
+[alias]
+	st = status
+	br = branch
+	co = commit
+	ch = checkout
