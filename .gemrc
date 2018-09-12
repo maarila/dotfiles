@@ -1,0 +1,2 @@
+# disable ri and RDoc for gem installs
+gem: --no-ri --no-rdoc

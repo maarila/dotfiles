@@ -12,24 +12,27 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'morhetz/gruvbox' " gruvbox theme
-Plugin 'scrooloose/nerdtree' " fancy tree file system explorer
+Plugin 'scrooloose/nerdtree' " tree file system explorer
 Plugin 'itchyny/lightline.vim' " show status line at the bottom
 Plugin 'Yggdroot/indentLine' " show vertical indentation lines
 Plugin 'tpope/vim-surround' " add, change, delete surroundings, cs'<q> -> ' to q
+Plugin 'tpope/vim-rails' " Ruby on Rails support
+Plugin 'tpope/vim-endwise' " add 'end' in Ruby after if/def/do etc.
 Plugin 'justinmk/vim-sneak' " search with s{char}{char}
 Plugin 'scrooloose/nerdcommenter' " comment with <leader>cc/<leader>cu
-Plugin 'tpope/vim-fugitive' " Git wrapper
 Plugin 'pangloss/vim-javascript' " Javascript syntax package
 Plugin 'mxw/vim-jsx' " React syntax highlighting
 Plugin 'othree/html5.vim' " html5 syntax and indent
 Plugin 'mattn/emmet-vim' " expand html and css with <C-y>,
 Plugin 'jiangmiao/auto-pairs' " insert parenthesis in pairs
+Plugin 'airblade/vim-gitgutter' " show git diff in the gutter
+Plugin 'junegunn/fzf.vim' " enable fzf fuzzy search
 Plugin 'scrooloose/syntastic' " TO BE REPLACED BY ALE
 
 " potential plugins
-" Plugin 'airblade/vim-gitgutter' " show git diff in the gutter
 " Plugin 'HerringtonDarkholme/yats.vim' " Typescript syntax
 " Plugin 'sheerun/vim-polyglot' " works automatically
+" Plugin 'tpope/vim-fugitive' " Git wrapper
 
 " alternative plugins
 " Plugin 'othree/yajs.vim' " Javascript syntax file
@@ -44,7 +47,7 @@ filetype plugin indent on    " required
 " set leader to comma instead of \
 let mapleader=","
 
-" set runtime path to include fzf (installed w/Brew), run with :FZF
+" set runtime path to include fzf (installed w/Brew)
 set rtp+=/usr/local/opt/fzf
 
 " set default configuration for Syntastic
@@ -66,7 +69,7 @@ nnoremap <silent> <leader>v :NERDTreeFind<CR>
 let g:NERDSpaceDelims = 1
 
 " disable indentLine for markdown in order to set conceal level to 0 in md files
-" i.e. show markdown formatting within a markdown file
+" i.e. show markdown formatting explicitly within a markdown file
 let g:indentLine_fileTypeExclude = ['markdown']
 
 " show Lightline at startup
@@ -89,6 +92,11 @@ nnoremap <leader>p :bp<CR>
 nnoremap <leader>n :bn<CR>
 nnoremap <leader>d :bd<CR>
 
+" mappings for fzf fuzzy search
+nmap ä :Buffers<CR>
+nmap <leader>t :Files<CR>
+nmap <leader>r :Tags<CR>
+
 " map up and down keys to move cursor one line at a time even when a single
 " line extends to multiple lines
 nmap j gj
@@ -107,7 +115,7 @@ nnoremap ? _
 nnoremap ö :
 
 " make switching case easier
-nnoremap ä ~
+nnoremap å ~
 
 " map euro sign to dollar sign for easier moving to the EOL
 nnoremap € $
@@ -121,9 +129,6 @@ cnoremap / -
 
 " map <ESC> to jk
 inoremap jk <ESC>
-
-" map leader-b to run a ruby file
-au BufRead, *.rb nmap <leader>b :!ruby %<CR>
 
 " enable colors in code, NB. preferably not 'syntax on'
 if !exists("g:syntax_on")
@@ -157,28 +162,4 @@ set encoding=utf-8 " set proper text encoding
 set cursorline " highlight active line
 set scrolloff=7 " keep cursor nearer to the middle of the screen
 set colorcolumn=85 " show highlighted column @ 85 width
-
-" *****************************************************************
-" Here be deprecated settings saved for just-in-case:
-
-" Airline settings
-" PLEASE NOTE: Airline requires Powerline fonts to show correctly.
-" See: https://github.com/powerline/fonts
-" If undesired, please use Lighline instead (see alternative plugins above
-" and deprecated settings at the bottom)
-" let g:airline_powerline_fonts = 1 " enable Powerline fonts
-" let g:airline#extensions#tabline#enabled = 1 " display all buffers
-" let g:airline#extensions#tabline#buffer_nr_show = 1 " display buffer number
-" let g:airline#extensions#tabline#formatter = 'unique_tail_improved' " format filepath
-
-" set thin indent guides for vim-indent-guides
-" let g:indent_guides_guide_size = 1
-
-" set CTRL+n to open NERDTree
-" map <C-n> :NERDTreeToggle<CR>
-" let NERDTreeShowHidden=1 " show hidden files in NERDTree
-
-" remove netrw banner and choose netrw default view
-" let g:netrw_banner = 0
-" let g:netrw_liststyle = 3
 

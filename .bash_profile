@@ -4,6 +4,10 @@ export PS1="\[\033[32m\]\u\[\033[32m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\n\[\033[m
 # add directories for cd command to find
 export CDPATH=.:$HOME:/usr/local/share:$HOME/code
 
+# add support for Ruby's package manager rbenv
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
 # Set aliases
 # Please note: 'gls' command requires coreutils to be installed on OS X.
 # Run: brew install coreutils
