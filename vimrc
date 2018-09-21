@@ -27,7 +27,7 @@ Plugin 'mattn/emmet-vim' " expand html and css with <C-y>,
 Plugin 'jiangmiao/auto-pairs' " insert parenthesis in pairs
 Plugin 'airblade/vim-gitgutter' " show git diff in the gutter
 Plugin 'junegunn/fzf.vim' " enable fzf fuzzy search
-Plugin 'scrooloose/syntastic' " TO BE REPLACED BY ALE
+Plugin 'w0rp/Ale' " provide asynchronous linting
 
 " potential plugins
 " Plugin 'HerringtonDarkholme/yats.vim' " Typescript syntax
@@ -49,15 +49,6 @@ let mapleader=","
 
 " set runtime path to include fzf (installed w/Brew)
 set rtp+=/usr/local/opt/fzf
-
-" set default configuration for Syntastic
-set statusline+=%#warningmsg#
-set statusline+={SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
 
 " NERDTree settings and mappings
 let NERDTreeQuitOnOpen = 1 " close NERDTree when opening a file
