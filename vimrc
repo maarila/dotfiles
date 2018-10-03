@@ -28,6 +28,7 @@ Plugin 'jiangmiao/auto-pairs' " insert parenthesis in pairs
 Plugin 'airblade/vim-gitgutter' " show git diff in the gutter
 Plugin 'junegunn/fzf.vim' " enable fzf fuzzy search
 Plugin 'w0rp/Ale' " provide asynchronous linting
+Plugin 'janko-m/vim-test' " run tests from inside Vim
 
 " potential plugins
 " Plugin 'HerringtonDarkholme/yats.vim' " Typescript syntax
@@ -66,14 +67,31 @@ let g:indentLine_fileTypeExclude = ['markdown']
 " show Lightline at startup
 set laststatus=2
 
+" show gutter always for vim-gitgutter
+set signcolumn=yes
+
 " Sneak setting: enable clever sneak i.e. repeat sneak with s or S
 let g:sneak#s_next = 1
+
+" map keys for vim-test: nearest to cursor, current file, all, last run and
+" visit the test file that was last run
+nmap <silent> t<C-n> :TestNearest<CR>
+nmap <silent> t<C-f> :TestFile<CR>
+nmap <silent> t<C-g> :TestSuite<CR>
+nmap <silent> t<C-l> :TestLast<CR>
+nmap <silent> t<C-v> :TestVisit<CR>
 
 " map ctrl+j/k/l/h to move around windows
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+" map K to split a line into two (i.e. the opposite of J)
+nnoremap K i<CR><Esc>
+
+" map <leader><a> to re-indent all lines and return to original line
+nnoremap <leader>a gg=G''
 
 " map <leader><space> to clear search results
 nnoremap <leader><space> :noh<CR>
