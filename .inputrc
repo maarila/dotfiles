@@ -1,0 +1,10 @@
+# See: https://www.ukuug.org/events/linux2003/papers/bash_tips/
+# .inputrc is activated with 'bind -f ~/.inputrc'
+
+# Autofill from history with Up and Down
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+
+set completion-ignore-case on
+set show-all-if-ambiguous on
+TAB: menu-complete
