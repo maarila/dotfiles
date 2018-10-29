@@ -8,6 +8,10 @@ export CDPATH=.:$HOME:/usr/local/share:$HOME/code
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
+# add support for a larger history length
+export HISTSIZE=1000000
+export HISTFILESIZE=1000000
+
 # Set aliases
 # Please note: 'gls' command requires coreutils to be installed on OS X.
 # Run: brew install coreutils
