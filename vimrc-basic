@@ -1,0 +1,96 @@
+"***************************************************************
+" Plug'n'play settings for Vim. Nothing to install.
+"***************************************************************
+
+set nocompatible " switch on Vi iMproved improvements
+filetype plugin indent on " switch on filetype detection, plugin and auto-indent
+
+" set leader to comma instead of \
+let mapleader=","
+
+" map ctrl+j/k/l/h to move around split panes
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" map K to split a line into two (i.e. the opposite of J)
+nnoremap K i<CR><Esc>
+
+" map <leader><a> to re-indent all lines and return to original line
+nnoremap <leader>a gg=G''
+
+" map <leader><space> to clear search results
+nnoremap <leader><space> :noh<CR>
+
+" mappings for accessing files and buffers
+nmap ä :Buffers<CR>
+nmap <leader>t :Files<CR>
+
+" mappings for buffer switching: previous, next, delete
+nnoremap <leader>p :bp<CR>
+nnoremap <leader>n :bn<CR>
+nnoremap <leader>d :bd<CR>
+
+" map up and down keys to move cursor one line at a time even when a single
+" line extends to multiple lines
+nmap j gj
+nmap k gk
+
+" map search forward and backward similarly as in US/UK keyboards, then switch
+" original functionality to the replacements
+nnoremap - /
+nnoremap _ ?
+
+nnoremap / -
+nnoremap ? _
+
+" map colon similarly (or better) as in US/UK keyboards
+nnoremap ö :
+
+" make switching case easier
+nnoremap å ~
+
+" map euro sign to dollar sign for easier moving to the EOL
+nnoremap € $
+
+" map c€ to c$
+nnoremap c€ c$
+
+" command mode: map backslash as in US/UK keyboards to make substituting faster
+cnoremap - /
+cnoremap / -
+
+" map <ESC> to jk
+inoremap jk <ESC>
+
+" enable colors in code, NB. preferably not 'syntax on'
+if !exists("g:syntax_on")
+    syntax enable
+endif
+
+" current color theme
+set background=dark
+colorscheme default
+
+" show trailing whitespace in red
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+\%#\@<!$/
+
+set backspace=indent,eol,start " allow backspacing over everything
+set colorcolumn=80 " show highlighted column @ 80 width
+set cursorline " highlight active line
+set encoding=utf-8 " set proper text encoding
+set expandtab " make tab insert spaces instead of tab characters
+set hidden " hide buffers instead of closing them
+set hlsearch " highlight search terms
+set ignorecase " make search case-insensitive
+set incsearch " show search matches while typing
+set noshowmode " hide -- INSERT -- from below Airline
+set number " show line numbers
+set relativenumber " set line number relative to position
+set scrolloff=7 " keep cursor nearer to the middle of the screen
+set shiftround " use shiftwidth when indenting with < and >
+set shiftwidth=2 " number of spaces for autoindent
+set smartcase " ignore case if search is lowercase, otherwise case-sensitive
+set tabstop=2 " show tab as X spaces
