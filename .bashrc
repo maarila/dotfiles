@@ -1,6 +1,20 @@
 # Set colors for ls
 export CLICOLOR=1
 
+# closing the shell with ctrl-D requires two presses
+export IGNOREEOF=1
+
+# add support for a larger history length
+export HISTSIZE=1000000
+export HISTFILESIZE=1000000
+
+# avoid duplicates in history
+export HISTCONTROL=ignoredups:erasedups:ignorespace
+
+# append to history on exit
+shopt -s histappend
+
+
 
 #*************************************#
 #  The 'feel free to delete' section  #
