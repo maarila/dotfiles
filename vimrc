@@ -63,6 +63,8 @@ let g:NERDSpaceDelims = 1
 " disable indentLine for markdown in order to set conceal level to 0 in md files
 " i.e. show markdown formatting explicitly within a markdown file
 let g:indentLine_fileTypeExclude = ['markdown']
+" show indent lines from the first level
+let g:indentLine_showFirstIndentLevel = 1
 
 " show Lightline at startup
 set laststatus=2
@@ -81,7 +83,7 @@ nmap <silent> t<C-g> :TestSuite<CR>
 nmap <silent> t<C-l> :TestLast<CR>
 nmap <silent> t<C-v> :TestVisit<CR>
 
-" map ctrl+j/k/l/h to move around windows
+" map ctrl+j/k/l/h to move around split panes
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
@@ -153,22 +155,20 @@ colorscheme gruvbox
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+\%#\@<!$/
 
+set backspace=indent,eol,start " allow backspacing over everything
+set colorcolumn=85 " show highlighted column @ 85 width
+set cursorline " highlight active line
+set encoding=utf-8 " set proper text encoding
+set expandtab " make tab insert spaces instead of tab characters
 set hidden " hide buffers instead of closing them
-set noshowmode " hide -- INSERT -- from below Airline
-set ignorecase " make search case-insensitive
-set smartcase " ignore case if search is lowercase, otherwise case-sensitive
 set hlsearch " highlight search terms
+set ignorecase " make search case-insensitive
 set incsearch " show search matches while typing
+set noshowmode " hide -- INSERT -- from below Airline
 set number " show line numbers
 set relativenumber " set line number relative to position
-set backspace=indent,eol,start " allow backspacing over everything
-set expandtab " make tab insert spaces instead of tab characters
-set tabstop=2 " show tab as X spaces
-set shiftwidth=2 " number of spaces for autoindent
-set shiftround " use shiftwidth when indenting with < and >
-set expandtab " make tab insert spaces instead of tab characters
-set encoding=utf-8 " set proper text encoding
-set cursorline " highlight active line
 set scrolloff=7 " keep cursor nearer to the middle of the screen
-set colorcolumn=85 " show highlighted column @ 85 width
-
+set shiftround " use shiftwidth when indenting with < and >
+set shiftwidth=2 " number of spaces for autoindent
+set smartcase " ignore case if search is lowercase, otherwise case-sensitive
+set tabstop=2 " show tab as X spaces
