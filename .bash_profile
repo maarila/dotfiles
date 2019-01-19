@@ -10,7 +10,7 @@ export GREP_OPTIONS='--color=auto'
 # highlight man pages
 export LESS_TERMCAP_mb=$'\E[01;31m' # start blink
 export LESS_TERMCAP_md=$'\E[01;33m' # start bold
-export LESS_TERMCAP_me=$'\E[0m' # turn off bold,blink, underline
+export LESS_TERMCAP_me=$'\E[0m' # turn off bold, blink, underline
 export LESS_TERMCAP_se=$'\E[0m' # stop standout
 export LESS_TERMCAP_so=$'\E[01;42;30m' # start standout
 export LESS_TERMCAP_ue=$'\E[0m' # stop underline
