@@ -17,8 +17,8 @@ export LESS_TERMCAP_ue=$'\E[0m' # stop underline
 export LESS_TERMCAP_us=$'\E[01;36m' # start underline
 
 # add support for Ruby's package manager rbenv
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+# export PATH="$HOME/.rbenv/bin:$PATH"
+# eval "$(rbenv init -)"
 
 # Set aliases
 # Please note: 'gls' command requires coreutils to be installed on OS X.

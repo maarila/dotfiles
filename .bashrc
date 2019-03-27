@@ -1,3 +1,6 @@
+# Set locale to en_US
+export LANG=en_US.UTF-8
+
 # Set colors for ls
 export CLICOLOR=1
 

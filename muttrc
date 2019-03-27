@@ -1,20 +1,28 @@
-set from = "(g)mailaddress"
-set realname = "Real Name"
+set ssl_starttls = yes
+set ssl_force_tls = yes
+
+set imap_user = "GMAIL_ADDRESS"
+set imap_pass = "YOUR_PASSWORD"
+
+set from = "GMAIL_ADDRESS"
+set realname = "REAL NAME"
 
 set use_from = yes
 set envelope_from = yes
 
-# enable sending SMTP on a Mac
+set header_cache = "~/.mutt/cache/headers"
+set message_cachedir = "~/.mutt/cache/bodies"
+set certificate_file = "~/.mutt/certificates"
+
 set smtp_authenticators = 'gssapi:login'
-
-set smtp_url = "smtp://<account_name>@(g)mail.com@smtp.gmail.com:587/"
-set smtp_pass = "password_here"
-
-set imap_user = "<account_name>@(g)mail.com"
-set imap_pass = "password_here"
-
+set smtp_url = "smtp://GMAIL_ADDRESS@smtp.gmail.com:587/"
+set smtp_pass = "YOUR_PASSWORD"
 set folder = "imaps://imap.gmail.com:993"
-set spoolfile = "+INBOX"
-set ssl_force_tls = yes
+set spoolfile = "imaps://imap.gmail.com/INBOX"
+set postponed = "imaps://imap.gmail.com/[Gmail]/Drafts"
+set record = "~/.mutt/sent"
+
+set move = no
+set imap_keepalive = 900
 
 bind index G imap-fetch-mail
