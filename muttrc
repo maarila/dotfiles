@@ -1,0 +1,20 @@
+set from = "(g)mailaddress"
+set realname = "Real Name"
+
+set use_from = yes
+set envelope_from = yes
+
+# enable sending SMTP on a Mac
+set smtp_authenticators = 'gssapi:login'
+
+set smtp_url = "smtp://<account_name>@(g)mail.com@smtp.gmail.com:587/"
+set smtp_pass = "password_here"
+
+set imap_user = "<account_name>@(g)mail.com"
+set imap_pass = "password_here"
+
+set folder = "imaps://imap.gmail.com:993"
+set spoolfile = "+INBOX"
+set ssl_force_tls = yes
+
+bind index G imap-fetch-mail
