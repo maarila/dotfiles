@@ -75,6 +75,9 @@ set signcolumn=yes
 " Sneak setting: enable clever sneak i.e. repeat sneak with s or S
 let g:sneak#s_next = 1
 
+" remove conceal from JSON files
+let g:vim_json_syntax_conceal = 0
+
 " map keys for vim-test: nearest to cursor, current file, all, last run and
 " visit the test file that was last run
 nmap <silent> t<C-n> :TestNearest<CR>
