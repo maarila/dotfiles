@@ -53,6 +53,10 @@ set rtp+=/usr/local/opt/fzf
 
 " show ALE linters
 let g:ale_echo_msg_format = '%linter% says %s'
+" tweak ALE error signs
+let g:ale_sign_error = '●'
+let g_ale_sign_warning = '.'
+let g_ale_lint_on_enter = 0
 
 " NERDTree settings and mappings
 let NERDTreeQuitOnOpen = 1 " close NERDTree when opening a file
@@ -78,6 +82,14 @@ set signcolumn=yes
 
 " Sneak setting: enable clever sneak i.e. repeat sneak with s or S
 let g:sneak#s_next = 1
+
+" improve Emmet for JSX
+let g:user_emmet_settings = {
+  \  'javascript.jsx' : {
+    \  'extends': 'jsx',
+    \  'quote_char': "'",
+    \  },
+  \}
 
 " map keys for vim-test: nearest to cursor, current file, all, last run and
 " visit the test file that was last run
