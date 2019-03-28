@@ -51,6 +51,9 @@ let mapleader=","
 " set runtime path to include fzf (installed w/Brew)
 set rtp+=/usr/local/opt/fzf
 
+" show ALE linters
+let g:ale_echo_msg_format = '%linter% says %s'
+
 " NERDTree settings and mappings
 let NERDTreeQuitOnOpen = 1 " close NERDTree when opening a file
 let NERDTreeAutoDeleteBuffer = 1 " delete also the buffer when deleting a file
@@ -60,11 +63,12 @@ nnoremap <silent> <leader>v :NERDTreeFind<CR>
 " make NERDCommenter add a space after comment sign
 let g:NERDSpaceDelims = 1
 
-" disable indentLine for markdown in order to set conceal level to 0 in md files
-" i.e. show markdown formatting explicitly within a markdown file
-let g:indentLine_fileTypeExclude = ['markdown']
 " show indent lines from the first level
 let g:indentLine_showFirstIndentLevel = 1
+
+" disable indentLine for markdown, json in order to set conceal level to 0
+" i.e. show markdown formatting explicitly within a markdown file
+let g:indentLine_fileTypeExclude = ['markdown', 'json']
 
 " show Lightline at startup
 set laststatus=2
@@ -74,9 +78,6 @@ set signcolumn=yes
 
 " Sneak setting: enable clever sneak i.e. repeat sneak with s or S
 let g:sneak#s_next = 1
-
-" remove conceal from JSON files
-let g:vim_json_syntax_conceal = 0
 
 " map keys for vim-test: nearest to cursor, current file, all, last run and
 " visit the test file that was last run
