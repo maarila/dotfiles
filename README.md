@@ -15,7 +15,8 @@ Nordic keyboard layouts (among others) are not great for Vim. Mappings in this v
 
 It is also highly recommended to map Ctrl to Caps Lock on the operating system level to minimise finger travel. On Mac OS X the mapping can be changed at System Preferences -> Keyboard -> Modifier Keys. On Ubuntu, use gnome-tweak-tool:
 
-```sudo apt install gnome-tweak-tool
-gnome-tweaks```
+```sudo apt install gnome-tweak-tool```
+
+```gnome-tweaks```
 
 Select Keyboard & Mouse -> Additional Layout Options -> Caps Lock behavior -> Caps Lock is also a Ctrl.
