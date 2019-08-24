@@ -1,5 +1,5 @@
-" PLEASE NOTE: Vundle needs to be separately installed first.
-" See: http://github.com/VundleVim/Vundle.Vim
+" PLEASE NOTE: Vundle needs to be separately installed first:
+" git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 " definitions required by Vundle start here
 set nocompatible              " be iMproved, required
@@ -16,24 +16,28 @@ Plugin 'scrooloose/nerdtree' " tree file system explorer
 Plugin 'itchyny/lightline.vim' " show status line at the bottom
 Plugin 'Yggdroot/indentLine' " show vertical indentation lines
 Plugin 'tpope/vim-surround' " add, change, delete surroundings, cs'<q> -> ' to q
-Plugin 'tpope/vim-rails' " Ruby on Rails support
-Plugin 'tpope/vim-endwise' " add 'end' in Ruby after if/def/do etc.
 Plugin 'justinmk/vim-sneak' " search with s{char}{char}
 Plugin 'scrooloose/nerdcommenter' " comment with <leader>cc/<leader>cu
 Plugin 'pangloss/vim-javascript' " Javascript syntax package
 Plugin 'mxw/vim-jsx' " React syntax highlighting
-Plugin 'othree/html5.vim' " html5 syntax and indent
+Plugin 'elzr/vim-json' " JSON syntax highlighting and warnings
 Plugin 'mattn/emmet-vim' " expand html and css with <C-y>,
 Plugin 'jiangmiao/auto-pairs' " insert parenthesis in pairs
 Plugin 'airblade/vim-gitgutter' " show git diff in the gutter
 Plugin 'junegunn/fzf.vim' " enable fzf fuzzy search
 Plugin 'w0rp/Ale' " provide asynchronous linting
 Plugin 'janko-m/vim-test' " run tests from inside Vim
+Plugin 'ap/vim-css-color' " add color preview to CSS colors
 
 " potential plugins
+" Plugin 'othree/html5.vim' " html5 syntax and indent
+" Plugin 'tpope/vim-rails' " Ruby on Rails support
+" Plugin 'tpope/vim-endwise' " add 'end' in Ruby after if/def/do etc.
 " Plugin 'HerringtonDarkholme/yats.vim' " Typescript syntax
 " Plugin 'sheerun/vim-polyglot' " works automatically
 " Plugin 'tpope/vim-fugitive' " Git wrapper
+" Plugin 'SirVer/ultisnips' " snippets for vim
+" Plugin 'honza/vim-snippets' " ready-made snippets
 
 " alternative plugins
 " Plugin 'othree/yajs.vim' " Javascript syntax file
@@ -48,8 +52,13 @@ filetype plugin indent on    " required
 " set leader to comma instead of \
 let mapleader=","
 
+" installing fzf:
+" git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+" ~/.fzf/install
 " set runtime path to include fzf (installed w/Brew)
 set rtp+=/usr/local/opt/fzf
+" set runtime path to include fzf (installed w/git)
+" set rtp+=~/.fzf
 
 " show ALE linters
 let g:ale_echo_msg_format = '%linter% says %s'
