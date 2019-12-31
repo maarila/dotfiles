@@ -1,34 +1,103 @@
-# Set locale to en_US
-export LANG=en_US.UTF-8
+# ~/.bashrc: executed by bash(1) for non-login shells.
+# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
+# for examples
 
-# Set colors for ls
-export CLICOLOR=1
+# If not running interactively, don't do anything
+case $- in
+  *i*) ;;
+  *) return;;
+esac
 
-# closing the shell with ctrl-D requires two presses
-export IGNOREEOF=1
+# don't put duplicate lines or lines starting with space in the history.
+# See bash(1) for more options
+export HISTCONTROL=ignoredups:erasedups:ignorespace
 
-# add support for a larger history length
+# append to the history file, don't overwrite it
+shopt -s histappend
+
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 export HISTSIZE=1000000
 export HISTFILESIZE=1000000
 
-# avoid duplicates in history
-export HISTCONTROL=ignoredups:erasedups:ignorespace
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
 
-# append to history on exit
-shopt -s histappend
+# If set, the pattern "**" used in a pathname expansion context will
+# match all files and zero or more directories and subdirectories.
+#shopt -s globstar
 
+# make less more friendly for non-text input files, see lesspipe(1)
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
+# highlight man pages
+export LESS_TERMCAP_mb=$'\E[01;31m' # start blink
+export LESS_TERMCAP_md=$'\E[01;33m' # start bold
+export LESS_TERMCAP_me=$'\E[0m' # turn off bold, blink, underline
+export LESS_TERMCAP_se=$'\E[0m' # stop standout
+export LESS_TERMCAP_so=$'\E[01;42;30m' # start standout
+export LESS_TERMCAP_ue=$'\E[0m' # stop underline
+export LESS_TERMCAP_us=$'\E[01;36m' # start underline
 
-#*************************************#
-#  The 'feel free to delete' section  #
-#*************************************#
-
-# Show a greeting when opening terminal.
-# Please note: fortune/cowsay/lolcat all need to be installed with 'brew install'
-if [ -x /usr/local/bin/fortune -a -x /usr/local/bin/cowsay -a -x /usr/local/bin/lolcat ]; then
-  fortune -s | cowsay | lolcat
+# set variable identifying the chroot you work in (used in the prompt below)
+if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
+  debian_chroot=$(cat /etc/debian_chroot)
 fi
 
-# View random cowsay by replacing the above cowsay with the following:
-# cowsay -f `ls -1 /usr/local/Cellar/cowsay/3.04/share/cows/*.cow | sort -R | head -1` -n
+# set a fancy prompt (non-color, unless we know we "want" color)
+case "$TERM" in
+  xterm-color) color_prompt=yes;;
+esac
 
+# uncomment for a colored prompt, if the terminal has the capability; turned
+# off by default to not distract the user: the focus in a terminal window
+# should be on the output of commands, not on the prompt
+force_color_prompt=yes
+
+if [ -n "$force_color_prompt" ]; then
+  if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+    # We have color support; assume it's compliant with Ecma-48
+    # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+    # a case would tend to support setf rather than setaf.)
+    color_prompt=yes
+  else
+    color_prompt=
+  fi
+fi
+
+if [ "$color_prompt" = yes ]; then
+  PS1="\[\033[32m\]\u\[\033[32m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\n\[\033[m\]\$ "
+else
+  PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+fi
+unset color_prompt force_color_prompt
+
+# If this is an xterm set the title to user@host:dir
+case "$TERM" in
+  xterm*|rxvt*)
+    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+    ;;
+  *)
+    ;;
+esac
+
+# enable color support of ls
+if [ -x /usr/bin/dircolors ]; then
+  test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+fi
+
+# Alias definitions.
+if [ -f ~/.bash_aliases ]; then
+  . ~/.bash_aliases
+fi
+
+# enable programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi

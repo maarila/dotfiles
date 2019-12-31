@@ -21,6 +21,7 @@ Plugin 'scrooloose/nerdcommenter' " comment with <leader>cc/<leader>cu
 Plugin 'pangloss/vim-javascript' " Javascript syntax package
 Plugin 'mxw/vim-jsx' " React syntax highlighting
 Plugin 'elzr/vim-json' " JSON syntax highlighting and warnings
+Plugin 'othree/html5.vim' " html5 syntax and indent
 Plugin 'mattn/emmet-vim' " expand html and css with <C-y>,
 Plugin 'jiangmiao/auto-pairs' " insert parenthesis in pairs
 Plugin 'airblade/vim-gitgutter' " show git diff in the gutter
@@ -30,7 +31,6 @@ Plugin 'janko-m/vim-test' " run tests from inside Vim
 Plugin 'ap/vim-css-color' " add color preview to CSS colors
 
 " potential plugins
-" Plugin 'othree/html5.vim' " html5 syntax and indent
 " Plugin 'tpope/vim-rails' " Ruby on Rails support
 " Plugin 'tpope/vim-endwise' " add 'end' in Ruby after if/def/do etc.
 " Plugin 'HerringtonDarkholme/yats.vim' " Typescript syntax
@@ -56,9 +56,9 @@ let mapleader=","
 " git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 " ~/.fzf/install
 " set runtime path to include fzf (installed w/Brew)
-set rtp+=/usr/local/opt/fzf
+" set rtp+=/usr/local/opt/fzf
 " set runtime path to include fzf (installed w/git)
-" set rtp+=~/.fzf
+set rtp+=~/.fzf
 
 " show ALE linters
 let g:ale_echo_msg_format = '%linter% says %s'

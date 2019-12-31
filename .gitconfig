@@ -1,0 +1,14 @@
+[user]
+  name = Firstname Lastname
+  email = email@address.here
+  username = username
+[core]
+  editor = vim
+[color]
+    ui = auto
+[alias]
+	st = status
+	br = branch
+	co = commit
+  cm = commit -m
+	ch = checkout
