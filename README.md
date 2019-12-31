@@ -3,7 +3,7 @@
 ### Usage:
 1. Clone the repository to your desired location on your local host:
 `git clone https://github.com/maarila/dotfiles.git`
-2. Change to home directory.
+2. Change to home directory:
 `cd $HOME`
 3. Create a symbolic link to the dotfile:
 `ln -s path/to/dotfiles/dotfile-name dotfile-name`
