@@ -71,7 +71,7 @@ endif
 
 " current color theme
 set background=dark
-colorscheme peachpuff
+colorscheme industry
 
 " show trailing whitespace in red
 highlight ExtraWhitespace ctermbg=red guibg=red
