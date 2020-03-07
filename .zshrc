@@ -22,6 +22,11 @@ export HISTCONTROL=ignoredups:erasedups:ignorespace
 # shopt -s histappend
 setopt APPEND_HISTORY
 
+# case insensitive path-completion
+zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*'
+
+autoload -Uz compinit && compinit
+
 # if [ -f ~/.zprofile ]; then
     # source ~/.zprofile
 # fi
