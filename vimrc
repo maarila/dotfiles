@@ -29,6 +29,7 @@ Plugin 'junegunn/fzf.vim' " enable fzf fuzzy search
 Plugin 'w0rp/Ale' " provide asynchronous linting
 Plugin 'janko-m/vim-test' " run tests from inside Vim
 Plugin 'ap/vim-css-color' " add color preview to CSS colors
+Plugin 'vim-perl/vim-perl' " various Perl-related syntax and helper files for Perl 5
 
 " potential plugins
 " Plugin 'tpope/vim-rails' " Ruby on Rails support
