@@ -1,54 +1,54 @@
-" PLEASE NOTE: Vundle needs to be separately installed first:
-" git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+" PLEASE NOTE: vim-plug needs to be separately installed first:
+" curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+"   https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-" definitions required by Vundle start here
-set nocompatible              " be iMproved, required
-filetype off                  " required
+" definition required by vim-plug
+call plug#begin('~/.vim/plugged')
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'morhetz/gruvbox' " gruvbox theme
-Plugin 'scrooloose/nerdtree' " tree file system explorer
-Plugin 'itchyny/lightline.vim' " show status line at the bottom
-Plugin 'Yggdroot/indentLine' " show vertical indentation lines
-Plugin 'tpope/vim-surround' " add, change, delete surroundings, cs'<q> -> ' to q
-Plugin 'justinmk/vim-sneak' " search with s{char}{char}
-Plugin 'scrooloose/nerdcommenter' " comment with <leader>cc/<leader>cu
-Plugin 'pangloss/vim-javascript' " Javascript syntax package
-Plugin 'mxw/vim-jsx' " React syntax highlighting
-Plugin 'elzr/vim-json' " JSON syntax highlighting and warnings
-Plugin 'othree/html5.vim' " html5 syntax and indent
-Plugin 'mattn/emmet-vim' " expand html and css with <C-y>,
-Plugin 'jiangmiao/auto-pairs' " insert parenthesis in pairs
-Plugin 'airblade/vim-gitgutter' " show git diff in the gutter
-Plugin 'junegunn/fzf.vim' " enable fzf fuzzy search
-Plugin 'w0rp/Ale' " provide asynchronous linting
-Plugin 'janko-m/vim-test' " run tests from inside Vim
-Plugin 'ap/vim-css-color' " add color preview to CSS colors
-Plugin 'vim-perl/vim-perl' " various Perl-related syntax and helper files for Perl 5
+" list of plugins to load
+Plug 'cocopon/iceberg.vim' " gruvbox theme
+Plug 'scrooloose/nerdtree' " tree file system explorer
+Plug 'itchyny/lightline.vim' " show status line at the bottom
+Plug 'mengelbrecht/lightline-bufferline' " show buffered files at the top
+Plug 'Yggdroot/indentLine' " show vertical indentation lines
+Plug 'tpope/vim-surround' " add, change, delete surroundings, cs'<q> -> ' to q
+Plug 'justinmk/vim-sneak' " search with s{char}{char}
+Plug 'scrooloose/nerdcommenter' " comment with <leader>cc/<leader>cu
+Plug 'pangloss/vim-javascript' " Javascript syntax package
+Plug 'mxw/vim-jsx' " React syntax highlighting
+Plug 'elzr/vim-json' " JSON syntax highlighting and warnings
+Plug 'othree/html5.vim' " html5 syntax and indent
+Plug 'mattn/emmet-vim' " expand html and css with <C-y>,
+Plug 'prettier/vim-prettier', { 'do': 'npm install' } " format code
+Plug 'jiangmiao/auto-pairs' " insert parenthesis in pairs
+Plug 'airblade/vim-gitgutter' " show git diff in the gutter
+Plug 'junegunn/fzf.vim' " enable fzf fuzzy search
+Plug 'dense-analysis/ale' " provide asynchronous linting
+Plug 'janko-m/vim-test' " run tests from inside Vim
+Plug 'ap/vim-css-color' " add color preview to CSS colors
+Plug 'vim-perl/vim-perl' " various Perl-related syntax and helper files for Perl 5
+Plug 'ntpeters/vim-better-whitespace' "highlight extra spaces and tabs
 
 " potential plugins
-" Plugin 'tpope/vim-rails' " Ruby on Rails support
-" Plugin 'tpope/vim-endwise' " add 'end' in Ruby after if/def/do etc.
-" Plugin 'HerringtonDarkholme/yats.vim' " Typescript syntax
-" Plugin 'sheerun/vim-polyglot' " works automatically
-" Plugin 'tpope/vim-fugitive' " Git wrapper
-" Plugin 'SirVer/ultisnips' " snippets for vim
-" Plugin 'honza/vim-snippets' " ready-made snippets
+" Plug 'tpope/vim-rails' " Ruby on Rails support
+" Plug 'tpope/vim-endwise' " add 'end' in Ruby after if/def/do etc.
+" Plug 'HerringtonDarkholme/yats.vim' " Typescript syntax
+" Plug 'sheerun/vim-polyglot' " works automatically
+" Plug 'tpope/vim-fugitive' " Git wrapper
+" Plug 'SirVer/ultisnips' " snippets for vim
+" Plug 'honza/vim-snippets' " ready-made snippets
 
 " alternative plugins
-" Plugin 'othree/yajs.vim' " Javascript syntax file
-" Plugin 'ryanoasis/vim-devicons' " requires nerdtree
-" Plugin 'vim-airline/vim-airline' " alternative to lightline
-" Plugin 'nathanaelkane/vim-indent-guides' " activate with <leader>ig
+" Plug 'othree/yajs.vim' " Javascript syntax file
+" Plug 'ryanoasis/vim-devicons' " requires nerdtree
+" Plug 'vim-airline/vim-airline' " alternative to lightline
+" Plug 'nathanaelkane/vim-indent-guides' " activate with <leader>ig
+" Plug 'morhetz/gruvbox' " gruvbox theme
+" Plug 'mhartington/oceanic-next' " gruvbox theme
+" Plug 'arcticicestudio/nord-vim' " nord vim theme
+" Plug 'joshdick/onedark.vim'
 
-call vundle#end()            " required
-filetype plugin indent on    " required
-" definitions required by Vundle end here!
+call plug#end() " required by vim-plug
 
 " set leader to comma instead of \
 let mapleader=","
@@ -84,8 +84,29 @@ let g:indentLine_showFirstIndentLevel = 1
 " i.e. show markdown formatting explicitly within a markdown file
 let g:indentLine_fileTypeExclude = ['markdown', 'json']
 
-" show Lightline at startup
+" show Lightline at startup and always show tabline
 set laststatus=2
+set showtabline=2
+
+" show ordinal numbering in Lightline buffer tabs
+let g:lightline#bufferline#show_number = 2
+
+" set colorscheme and add tabs to Lightline
+let g:lightline = {
+      \ 'colorscheme': 'nord',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ], ['readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'tabline': {
+      \   'left': [ ['buffers'] ],
+      \ },
+      \ 'component_expand': {
+      \   'buffers': 'lightline#bufferline#buffers'
+      \ },
+      \ 'component_type': {
+      \   'buffers': 'tabsel'
+      \ }
+      \ }
 
 " show gutter always for vim-gitgutter
 set signcolumn=yes
@@ -95,11 +116,11 @@ let g:sneak#s_next = 1
 
 " improve Emmet for JSX
 let g:user_emmet_settings = {
-  \  'javascript.jsx' : {
-    \  'extends': 'jsx',
-    \  'quote_char': "'",
-    \  },
-  \}
+      \ 'javascript.jsx' : {
+      \   'extends': 'jsx',
+      \   'quote_char': "'",
+      \ },
+      \ }
 
 " map keys for vim-test: nearest to cursor, current file, all, last run and
 " visit the test file that was last run
@@ -169,17 +190,13 @@ inoremap jk <ESC>
 
 " enable colors in code, NB. preferably not 'syntax on'
 if !exists("g:syntax_on")
-    syntax enable
+  syntax enable
 endif
 
 " current color theme
-set background=dark
-let g:gruvbox_contrast_dark='hard'
-colorscheme gruvbox
-
-" show trailing whitespace in red
-highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+\%#\@<!$/
+" set background=dark
+" let g:gruvbox_contrast_dark='hard'
+colorscheme spacegray
 
 set backspace=indent,eol,start " allow backspacing over everything
 set colorcolumn=85 " show highlighted column @ 85 width
