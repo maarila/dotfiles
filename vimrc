@@ -153,7 +153,11 @@ nnoremap <leader>d :bd<CR>
 " mappings for fzf fuzzy search
 nmap ä :Buffers<CR>
 nmap <leader>t :Files<CR>
+nmap <leader>g :GFiles<CR>
 nmap <leader>r :Tags<CR>
+
+" map <leader>i for Prettier
+nmap <leader>i :Prettier<CR>
 
 " map up and down keys to move cursor one line at a time even when a single
 " line extends to multiple lines
