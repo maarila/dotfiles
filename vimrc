@@ -6,28 +6,43 @@
 call plug#begin('~/.vim/plugged')
 
 " list of plugins to load
-Plug 'cocopon/iceberg.vim' " gruvbox theme
-Plug 'scrooloose/nerdtree' " tree file system explorer
+" appearance:
+Plug 'morhetz/gruvbox' " gruvbox theme
 Plug 'itchyny/lightline.vim' " show status line at the bottom
 Plug 'mengelbrecht/lightline-bufferline' " show buffered files at the top
+Plug 'airblade/vim-gitgutter' " show git diff in the gutter
 Plug 'Yggdroot/indentLine' " show vertical indentation lines
+
+" general functionality
+Plug 'scrooloose/nerdtree' " tree file system explorer
+Plug 'jiangmiao/auto-pairs' " insert parenthesis in pairs
+Plug 'ntpeters/vim-better-whitespace' " highlight extra spaces and tabs
+Plug 'junegunn/fzf.vim' " enable fzf fuzzy search
+
+" improved keyboard shortcuts
 Plug 'tpope/vim-surround' " add, change, delete surroundings, cs'<q> -> ' to q
 Plug 'justinmk/vim-sneak' " search with s{char}{char}
-Plug 'scrooloose/nerdcommenter' " comment with <leader>cc/<leader>cu
+Plug 'scrooloose/nerdcommenter' " comment with <leader>cc / <leader>cu
+
+" general coding
+Plug 'janko-m/vim-test' " run tests from inside Vim
+
+" code formatting
+Plug 'prettier/vim-prettier', { 'do': 'npm install' } " format code
+Plug 'dense-analysis/ale' " provide asynchronous linting
+
+" Javascript/React
 Plug 'pangloss/vim-javascript' " Javascript syntax package
 Plug 'mxw/vim-jsx' " React syntax highlighting
 Plug 'elzr/vim-json' " JSON syntax highlighting and warnings
+
+" HTML/CSS
 Plug 'othree/html5.vim' " html5 syntax and indent
-Plug 'mattn/emmet-vim' " expand html and css with <C-y>,
-Plug 'prettier/vim-prettier', { 'do': 'npm install' } " format code
-Plug 'jiangmiao/auto-pairs' " insert parenthesis in pairs
-Plug 'airblade/vim-gitgutter' " show git diff in the gutter
-Plug 'junegunn/fzf.vim' " enable fzf fuzzy search
-Plug 'dense-analysis/ale' " provide asynchronous linting
-Plug 'janko-m/vim-test' " run tests from inside Vim
 Plug 'ap/vim-css-color' " add color preview to CSS colors
-Plug 'vim-perl/vim-perl' " various Perl-related syntax and helper files for Perl 5
-Plug 'ntpeters/vim-better-whitespace' "highlight extra spaces and tabs
+Plug 'mattn/emmet-vim' " expand html and css with <C-y>,
+
+" Perl
+Plug 'vim-perl/vim-perl' " various syntax and helper files for Perl 5
 
 " potential plugins
 " Plug 'tpope/vim-rails' " Ruby on Rails support
@@ -40,15 +55,22 @@ Plug 'ntpeters/vim-better-whitespace' "highlight extra spaces and tabs
 
 " alternative plugins
 " Plug 'othree/yajs.vim' " Javascript syntax file
-" Plug 'ryanoasis/vim-devicons' " requires nerdtree
+" Plug 'ryanoasis/vim-devicons' " requires Nerd Fonts
 " Plug 'vim-airline/vim-airline' " alternative to lightline
 " Plug 'nathanaelkane/vim-indent-guides' " activate with <leader>ig
-" Plug 'morhetz/gruvbox' " gruvbox theme
-" Plug 'mhartington/oceanic-next' " gruvbox theme
-" Plug 'arcticicestudio/nord-vim' " nord vim theme
-" Plug 'joshdick/onedark.vim'
+" Plug 'mhartington/oceanic-next' " oceanic next theme
+" Plug 'joshdick/onedark.vim' " onedark theme
+" Plug 'arcticicestudio/nord-vim' " nord theme
+" Plug 'cocopon/iceberg.vim' " iceberg theme
 
 call plug#end() " required by vim-plug
+
+" enable True Color terminal
+if exists('+termguicolors')
+  let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
 
 " set leader to comma instead of \
 let mapleader=","
@@ -93,7 +115,7 @@ let g:lightline#bufferline#show_number = 2
 
 " set colorscheme and add tabs to Lightline
 let g:lightline = {
-      \ 'colorscheme': 'nord',
+      \ 'colorscheme': 'gruvbox',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ], ['readonly', 'filename', 'modified' ] ]
       \ },
@@ -165,8 +187,8 @@ nmap j gj
 nmap k gk
 
 " PLEASE NOTE: the following are for Nordic keyboard layouts.
-" map search forward and backward similarly as in US/UK keyboards, then switch
-" original functionality to the replacements
+" map search forward and backward similarly as in US/UK keyboards,
+" then switch original functionality to the replacements
 nnoremap - /
 nnoremap _ ?
 
@@ -197,13 +219,14 @@ if !exists("g:syntax_on")
   syntax enable
 endif
 
-" current color theme
-" set background=dark
-" let g:gruvbox_contrast_dark='hard'
-colorscheme spacegray
+" set color theme to Gruvbox
+set background=light
+let g:gruvbox_contrast_dark='soft'
+let g:gruvbox_contrast_light='soft'
+colorscheme gruvbox
 
 set backspace=indent,eol,start " allow backspacing over everything
-set colorcolumn=85 " show highlighted column @ 85 width
+set colorcolumn=80 " show highlighted column @ 80 width
 set cursorline " highlight active line
 set encoding=utf-8 " set proper text encoding
 set expandtab " make tab insert spaces instead of tab characters
